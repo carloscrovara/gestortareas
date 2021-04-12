@@ -46,4 +46,15 @@ class UserController extends AbstractController
 			'form' => $form->createView()
         ]);
     }
+	
+	public function login(AuthenticationUtils $autenticationUtils){
+		$error = $autenticationUtils->getLastAuthenticationError();
+		
+		$lastUsername = $autenticationUtils->getLastUsername();
+		
+		return $this->render('user/login.html.twig', array(
+			'error' => $error,
+			'last_username' => $lastUsername
+		));
+	}
 }

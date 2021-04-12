@@ -36,7 +36,8 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(name="role", type="string", length=50)
+     * @var string|null
+     * @ORM\Column(name="role", type="string", length=50, nullable=true)
      */
     private $roles;
 
@@ -55,8 +56,8 @@ class User implements UserInterface
     private $surname;
 
     /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @var string|null The hashed password
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\NotBlank
      */
     private $password;
@@ -106,9 +107,9 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): ?string
+    public function getRoles()
     {
-        return $this->roles;
+        return array('ROLE_USER');
     }
 
     public function setRoles(?string $role): self
