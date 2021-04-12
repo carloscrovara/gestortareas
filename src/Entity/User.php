@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -27,27 +28,36 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank
+	 * @Assert\Email(
+	 *    message = "El email '{{ value }}' no es valido",
+     * )
      */
     private $email;
 
     /**
-     * @ORM\Column(name="role", type="json")
+     * @ORM\Column(name="role", type="string", length=50)
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank
+	 * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank
+	 * @Assert\Regex("/[a-zA-Z ]+/")
      */
     private $surname;
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
      */
     private $password;
     
@@ -96,18 +106,14 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
+    public function getRoles(): ?string
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(?string $role): self
     {
-        $this->roles = $roles;
+        $this->roles = $role;
 
         return $this;
     }
@@ -173,12 +179,12 @@ class User implements UserInterface
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
