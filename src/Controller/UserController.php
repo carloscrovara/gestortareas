@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
 use App\Entity\User;
 use App\Form\RegisterType;
 
@@ -33,7 +32,7 @@ class UserController extends AbstractController
 			$encoded = $encoder->encodePassword($user, $user->getPassword());
 			$user->setPassword($encoded);
 			
-			// Guardar usuario
+			// Guardar usuario en DB
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($user);
 			$em->flush();

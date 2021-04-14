@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle de tarea{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h2> {{task.title}} </h2>
+    <p class="data-task">
+        {{task.user.name}} {{task.user.surname}} | {{task.createdAt|date('d/m/Y h:i')}} | 
+        {% if task.priority == 'high' %}
+              Prioridad {{ 'Alta' }}
+        {% endif %}
+        {% if task.priority == 'medium' %}
+            Prioridad {{ 'Media' }}
+        {% endif %}
+        {% if task.priority == 'low' %}
+            Prioridad {{ 'Baja' }}
+        {% endif %} 
+         | {{task.hours}}hs.
+    </p>
+    <p>
+        {{task.content}}
+    </p>
+ 
+</div>
+{% endblock %}
