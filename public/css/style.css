@@ -60,13 +60,34 @@ body{
     transition: all 300ms;
 }
 
-
 #menu li:hover {
     background: #444;
 }
 
 #menu li:hover a {
     color: white;
+}
+
+#footer-gral{
+    margin: 1em auto; 
+    max-width: 800px; 
+    width: 95%; 
+    text-align: center;
+}
+
+.text-footer{
+    font: 14px sans-serif; 
+    padding-top: 10px;
+}
+
+ion-icon{
+    color: red; 
+}
+
+#footer-particular{
+    margin: 1em auto; 
+    max-width: 800px; 
+    width: 95%; 
 }
 
 label{
@@ -107,7 +128,7 @@ table{
 
 table th,
 table td{
-    background: #f6f6f6;
+    background: #90caf9;
     padding: 15px;
     padding-right: 25px;
     padding-left: 25px;
@@ -116,7 +137,7 @@ table td{
 }
 
 table td{
-    background: #e9ffea;
+    background: #e3f2fd;
 }
 
 .buttons a{
@@ -139,6 +160,11 @@ table td{
 .buttons .btn-delete{
     background: red;
     border-color: #b90808;
+}
+
+.texto-login{
+    color: #444; 
+    font-size: 15px;
 }
 
 .data-task{

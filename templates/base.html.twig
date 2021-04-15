@@ -8,11 +8,12 @@
            and uncomment the following Encore helpers to start using Symfony UX #}
 
         {% block stylesheets %}
-            <link href="{{ asset('assets/css/style.css') }}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
         {% endblock %}
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
+            <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
         {% endblock %}
     </head>
     <body>
@@ -35,6 +36,13 @@
             </div>
             <div class="clearfix"></div>   
         {% endblock %}
+        
         {% block body %}{% endblock %}
+        
+        {% block footer %}
+            <footer id="footer-gral">
+                <p class="text-footer">Desarrollado con el <ion-icon name="heart"></ion-icon> por Carlos Marino Crovara.</p>
+            </footer>
+        {% endblock %}
     </body>
 </html>

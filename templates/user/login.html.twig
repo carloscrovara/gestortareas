@@ -23,8 +23,17 @@
 
         <input type="hidden" name="_target_path" value="{{ path('tasks') }}"/>
         
-        <input type="submit" value="Entrar" />
+        <input type="submit" value="Ingresar" />
     </form>
-    
+
+    <div>
+        <p class="texto-login">¿No tenés cuenta? <a style="text-decoration: none" href="{{ path('register') }}">Registrate</a></p>
+    </div>    
 </div>
 {% endblock %}
+
+{% block footer %}
+    <footer id="footer-particular">
+        <p class="text-footer">Desarrollado con el <ion-icon name="heart"></ion-icon> por Carlos Marino Crovara.</p>
+    </footer>
+{% endblock %}    
