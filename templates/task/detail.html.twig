@@ -8,7 +8,7 @@
     <p class="data-task">
         {{task.user.name}} {{task.user.surname}} | {{task.createdAt|date('d/m/Y h:i')}} | 
         {% if task.priority == 'high' %}
-              Prioridad {{ 'Alta' }}
+            Prioridad {{ 'Alta' }}
         {% endif %}
         {% if task.priority == 'medium' %}
             Prioridad {{ 'Media' }}
@@ -16,7 +16,7 @@
         {% if task.priority == 'low' %}
             Prioridad {{ 'Baja' }}
         {% endif %} 
-         | {{task.hours}}hs.
+        | {{task.hours}}hs.
     </p>
     <p>
         {{task.content}}
